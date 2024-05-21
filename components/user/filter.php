@@ -11,7 +11,7 @@ if(isset($_GET['go'])){
 
 <div class="board">
     <div class="find">
-        <h1>Наши Дрочи!</h1>
+        <h1>Наши Врачи!</h1>
     </div>
 </div>
 
@@ -29,7 +29,7 @@ if(isset($_GET['go'])){
 
     if($doctors->num_rows == 0){
         ?>
-            <h2 style="margin-bottom: 20px;">Врачей нема</h2>
+            <h2 style="margin-bottom: 20px;">Врачи отсутвуют!</h2>
         <?php
     } else {
     while($doctor = $doctors->fetch_assoc()){

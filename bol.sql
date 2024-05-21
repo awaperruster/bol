@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 21 2024 г., 00:15
+-- Время создания: Май 21 2024 г., 14:34
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -46,6 +46,29 @@ INSERT INTO `doctors` (`id`, `name`, `phone`, `email`, `img`, `id_specialties`) 
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `entry`
+--
+
+CREATE TABLE `entry` (
+  `id` int NOT NULL,
+  `id_user` int NOT NULL,
+  `id_doctor` int NOT NULL,
+  `time` time NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `entry`
+--
+
+INSERT INTO `entry` (`id`, `id_user`, `id_doctor`, `time`, `date`) VALUES
+(1, 1, 1, '00:00:00', '2024-05-21'),
+(2, 1, 1, '16:44:00', '2024-05-22'),
+(3, 1, 1, '16:45:00', '2024-05-23');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `specialties`
 --
 
@@ -60,12 +83,12 @@ CREATE TABLE `specialties` (
 --
 
 INSERT INTO `specialties` (`id`, `name`, `img`) VALUES
-(1, 'Педиатрия', ''),
-(2, 'Кардиология', ''),
-(3, 'Ортопедия', ''),
-(4, 'ГинеКАЛогия', ''),
-(5, 'Неврология', ''),
-(6, 'Психиатрия', '');
+(1, 'Педиатрия', 'pediatria.jpg'),
+(2, 'Кардиология', 'cardio.jpg'),
+(3, 'Ортопедия', 'ortoped.jpg'),
+(4, 'ГинеКАЛогия', 'vulva.jpg'),
+(5, 'Неврология', 'nevro.jpg'),
+(6, 'Психиатрия', 'brain.jpg');
 
 -- --------------------------------------------------------
 
@@ -101,6 +124,14 @@ ALTER TABLE `doctors`
   ADD KEY `id_specialties` (`id_specialties`);
 
 --
+-- Индексы таблицы `entry`
+--
+ALTER TABLE `entry`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_doctor` (`id_doctor`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Индексы таблицы `specialties`
 --
 ALTER TABLE `specialties`
@@ -123,6 +154,12 @@ ALTER TABLE `doctors`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT для таблицы `entry`
+--
+ALTER TABLE `entry`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT для таблицы `specialties`
 --
 ALTER TABLE `specialties`
@@ -143,6 +180,13 @@ ALTER TABLE `user`
 --
 ALTER TABLE `doctors`
   ADD CONSTRAINT `doctors_ibfk_1` FOREIGN KEY (`id_specialties`) REFERENCES `specialties` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `entry`
+--
+ALTER TABLE `entry`
+  ADD CONSTRAINT `entry_ibfk_1` FOREIGN KEY (`id_doctor`) REFERENCES `doctors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `entry_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

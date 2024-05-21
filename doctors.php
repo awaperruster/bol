@@ -11,7 +11,7 @@ if(isset($_GET['go'])){
 
 <div class="board">
     <div class="find">
-        <h1>Наши Дрочи!</h1>
+        <h1>Наши Врачи!</h1>
     </div>
 </div>
 
