@@ -22,10 +22,13 @@ include "components/header.php";
     $specialties = $core->query("SELECT * FROM `specialties`");
     while($specialt = $specialties->fetch_assoc()){
         ?>
-            <div class="specialt">
-                <p><?= $specialt['name']?></p>
-                <a href="doctors.php">Найти доктора</a>
-            </div>
+            <form action="components/user/filter.php" name="filter" method="post" class="specialt" style="background-image: url(/img/specialties/<?= $specialt['img']?>)">
+                <div class="spec">
+                    <input type="hidden" name="id" value="<?= $specialt['id']?>">
+                    <p><?= $specialt['name']?></p>
+                    <button name="search">Найти доктора</button>
+                </div>
+            </form>
         <?php
     }
     ?>

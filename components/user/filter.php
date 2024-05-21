@@ -1,5 +1,5 @@
 <?php
-include "components/header.php";
+include "../header.php";
 
 if(isset($_GET['go'])){
     $entry = $core->query("INSERT INTO `entry`(`id_user`, `id_doctor`, `date`, `time`) VALUES ('{$_SESSION['user']['id']}', '{$_GET['id']}', '{$_GET['date']}', '{$_GET['time']}')");
@@ -18,14 +18,27 @@ if(isset($_GET['go'])){
 
 <div class="doctors">
     <?php
-    $doctors = $core->query("SELECT * FROM `doctors`");
+    if(isset($_POST['search'])){
+    $doctors = $core->query("SELECT * FROM `doctors` WHERE `id_specialties` = '{$_POST['id']}'");
+
+    $specialties = $core->query("SELECT * FROM `specialties` WHERE `id` = '{$_POST['id']}'");
+    $specialt = $specialties->fetch_assoc();
+    ?>
+        <h1 style="margin-bottom: 20px;"><?= $specialt['name']?></h1>
+    <?php
+
+    if($doctors->num_rows == 0){
+        ?>
+            <h2 style="margin-bottom: 20px;">Врачей нема</h2>
+        <?php
+    } else {
     while($doctor = $doctors->fetch_assoc()){
         $specialties = $core->query("SELECT * FROM `specialties` WHERE `id` = '{$doctor['id_specialties']}'");
         $specialt = $specialties->fetch_assoc();
         ?>
             <div class="doctor">
                 <div class="img">
-                    <img src="img/doctors/<?=$doctor['img']?>" alt="">
+                    <img src="/img/doctors/<?=$doctor['img']?>" alt="">
                 </div>
                 <div class="description">
                     <h3>Имя</h3>
@@ -54,7 +67,9 @@ if(isset($_GET['go'])){
                     <button name="go">Записаться</button>
             </form>
 </div>
-        <?php }?>
+        <?php }
+        }
+        }?>
 </div>
 
 
@@ -63,9 +78,6 @@ if(isset($_GET['go'])){
 </main>
 
 <?php
-include "components/footer.php";
+include "../footer.php";
 ?>
-
-
-
 
