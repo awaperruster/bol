@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 21 2024 г., 14:34
+-- Время создания: Май 21 2024 г., 22:27
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -41,7 +41,11 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `name`, `phone`, `email`, `img`, `id_specialties`) VALUES
-(1, 'Абдуаля Ибрагим Ишак - Санин ', '+7999999999', '123@123', '1.jpg', 1);
+(1, 'Никольский Андрей Тимурович', '+7999999999', 'andreydoc@gmail.com', '1.jpg', 1),
+(2, 'Новиков Кирилл Михайлович', '+7888888888', 'novikovcardio@gmail.com', '2.jpg', 2),
+(3, 'Цветкова Камила Денисовна', '+7777777777', 'cvetkovakamila@gmail.com', '3.jpg', 4),
+(4, 'Некрасова Василиса Олеговна', '+7666666666', 'nekrasovadoc@gmail.com', '4.jpg', 1),
+(5, 'Чистяков Артём Миронович', '+7555555555', 'artemmironchdoc@gmail.com', '5.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -64,7 +68,9 @@ CREATE TABLE `entry` (
 INSERT INTO `entry` (`id`, `id_user`, `id_doctor`, `time`, `date`) VALUES
 (1, 1, 1, '00:00:00', '2024-05-21'),
 (2, 1, 1, '16:44:00', '2024-05-22'),
-(3, 1, 1, '16:45:00', '2024-05-23');
+(3, 1, 1, '16:45:00', '2024-05-23'),
+(4, 1, 1, '01:23:00', '2024-05-23'),
+(5, 1, 1, '15:22:00', '2024-05-30');
 
 -- --------------------------------------------------------
 
@@ -86,7 +92,7 @@ INSERT INTO `specialties` (`id`, `name`, `img`) VALUES
 (1, 'Педиатрия', 'pediatria.jpg'),
 (2, 'Кардиология', 'cardio.jpg'),
 (3, 'Ортопедия', 'ortoped.jpg'),
-(4, 'ГинеКАЛогия', 'vulva.jpg'),
+(4, 'Гинекология', 'vulva.jpg'),
 (5, 'Неврология', 'nevro.jpg'),
 (6, 'Психиатрия', 'brain.jpg');
 
@@ -151,13 +157,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `entry`
 --
 ALTER TABLE `entry`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `specialties`
