@@ -56,10 +56,15 @@ if(isset($_POST['log'])){
             ?>
                 <button onclick="openModal1()">Регистрация</button>
             <?php
-        } else { ?>
-                <a href="/logout.php">user</a>
+        } else {
+            $users = $core->query("SELECT * FROM `user` WHERE `id` = '{$_SESSION['user']['id']}'");
+            $user = $users->fetch_assoc();  
+            if($user['admin'] == 1){?>
+                <a href="/components/admin/admin.php">Админ-панель</a>
+            <?php
+            } else {}?>
+                <a href="/logout.php">Выход</a>
         <?php }
-        
         ?>
     </div>
 </header>

@@ -28,7 +28,6 @@ if(isset($_GET['go'])){
                     <img src="img/doctors/<?=$doctor['img']?>" alt="">
                 </div>
                 <div class="description">
-                    <h3>Имя</h3>
                     <h2><?= $doctor['name']?></h2>
                     <h4>Email</h4>
                     <p><?= $doctor['email']?></p>

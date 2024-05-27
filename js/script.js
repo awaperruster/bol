@@ -21,3 +21,31 @@ function openEntry(){
 function closeEntry(){
     document.getElementById('entry').style.display = 'none';
 }
+
+function entry(){
+    document.getElementById('entrys').style.display = 'flex';
+    document.getElementById('doctors').style.display = 'none';
+    document.getElementById('specialties').style.display = 'none';
+    document.getElementById('setings').style.display = 'none';
+}
+
+function doctor(){
+    document.getElementById('entrys').style.display = 'none';
+    document.getElementById('doctors').style.display = 'flex';
+    document.getElementById('specialties').style.display = 'none';
+    document.getElementById('setings').style.display = 'none';
+}
+
+function specialt(){
+    document.getElementById('entrys').style.display = 'none';
+    document.getElementById('doctors').style.display = 'none';
+    document.getElementById('specialties').style.display = 'flex';
+    document.getElementById('setings').style.display = 'none';
+}
+
+function setting(){
+    document.getElementById('entrys').style.display = 'none';
+    document.getElementById('doctors').style.display = 'none';
+    document.getElementById('specialties').style.display = 'none';
+    document.getElementById('setings').style.display = 'flex';
+}
