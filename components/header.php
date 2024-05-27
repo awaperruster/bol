@@ -9,7 +9,7 @@ if(isset($_POST['reg'])){
     if($users->num_rows > 0){
         echo "<script>alert('Электронная почта уже используется')</script>";
     } else {
-        $result = $core->query("INSERT INTO user(`name`, `phone`, `address`, `email`, `password`) VALUES ('{$_POST['name']}', '{$_POST['phone']}', '{$_POST['address']}', '{$_POST['email']}', '$password')");
+        $result = $core->query("INSERT INTO user(`name`, `phone`, `address`, `email`, `password`, `id_gender`) VALUES ('{$_POST['name']}', '{$_POST['phone']}', '{$_POST['address']}', '{$_POST['email']}', '$password', '{$_POST['gender']}')");
         header("Location: ../index.php");
     }
 }
@@ -63,6 +63,7 @@ if(isset($_POST['log'])){
                 <a href="/components/admin/admin.php">Админ-панель</a>
             <?php
             } else {}?>
+                <a href="/components/user.php">Профиль</a>
                 <a href="/logout.php">Выход</a>
         <?php }
         ?>
@@ -74,6 +75,14 @@ if(isset($_POST['log'])){
         <button onclick="closeModal1()" class="close">Закрыть</button>
         <form action="/components/header.php" method="post" class="formReg">
             <input type="text" name="name" placeholder="ФИО" required>
+            <select name="gender">
+                <?php
+                $genders = $core->query("SELECT * FROM `gender`");
+                while($gender = $genders->fetch_assoc()){
+                ?>
+                <option value="<?= $gender['id']?>"><?= $gender['name']?></option>
+                <?php }?>
+            </select>
             <input type="text" name="phone" placeholder="Номер телефона" required>
             <input type="text" name="address" placeholder="Адрес" required>
             <input type="email" name="email" placeholder="Email" required>

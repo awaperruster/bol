@@ -19,7 +19,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 900px;
+    gap: 600px;
     position: fixed;
     z-index: 1;
 }
@@ -83,7 +83,7 @@ header button:hover{
     margin: auto;
     margin-top: 200px;
     padding: 20px;
-    height: 380px;
+    height: 420px;
     width: 400px;
     text-align: center;
     border-radius: 10px;
@@ -581,6 +581,48 @@ header button:hover{
     color: #fff
 }
 
+.user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.3px solid lightgray;
+    border-radius: 10px;
+    padding: 50px;
+    gap: 150px;
+    width: 600px;
+}
+
+.user .icon{
+    height: 150px;
+    width: 150px;
+}
+
+.user .icon img{
+    width: auto;
+    height: 150px;
+}
+
+.user .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.user .info h2{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.user .info h3{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.user .info h4{
+    font-size: 18px;
+    font-weight: 300;
+}
 
 footer{
     margin-top: 50px;
