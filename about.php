@@ -17,3 +17,7 @@ include "components/header.php"; ?>
         <p><?=$about['about']?></p>
     </div>
 </main>
+
+<?php
+include "footer.php";
+?>
