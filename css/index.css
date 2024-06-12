@@ -624,6 +624,16 @@ header button:hover{
     font-weight: 300;
 }
 
+.aboutpage{
+    width: 900px;
+
+}
+
+.aboutpage p{
+    font-size: 20px;
+    text-align: center;
+}
+
 footer{
     margin-top: 50px;
     width: 100%;
